@@ -5,7 +5,6 @@ This project is a simple React Native application that utilizes `@react-navigati
 ## Installation
 Prerequisites
 Ensure you have the following installed:
-
 • Node.js
 • npm or yarn
 • React Native CLI
