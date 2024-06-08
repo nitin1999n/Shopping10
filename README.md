@@ -1,79 +1,114 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Project
+## Description
+This project is a simple React Native application that utilizes `@react-navigation/native-stack` and `@react-navigation/native` for navigation. It includes examples of using `NavigationContainer`, `PropsWithChildren`, and `toLocaleString()`.
 
-# Getting Started
+## Installation
+Prerequisites
+Ensure you have the following installed:
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+~ Node.js
+~ npm or yarn
+~ React Native CLI
+# Steps
+1. Clone the repository:
 
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 ```
 
-### For iOS
-
+2. Install the dependencies:
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+npm install
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+3. Install `@react-navigation/native-stack` and `@react-navigation/native`:
+```bash
+npm install @react-navigation/native @react-navigation/native-stack
+```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+4. Install additional dependencies for React Navigation:
+```bash
+npm install react-native-screens react-native-safe-area-context
+```
+5. For iOS, install the CocoaPods dependencies:
+```bash
+cd ios
+pod install
+cd ..
+```
 
-## Step 3: Modifying your App
+## Usage
+### Running the Application
 
-Now that you have successfully run the app, let's modify it.
+For Android:
+```bash
+npx react-native run-android
+```
+For iOS:
+```bash
+npx react-native run-ios
+```
+## Example Code
+Here is an example of how to set up and use `NavigationContainer` and `PropsWithChildren` in your project:
+```bash
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text, Button } from 'react-native';
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+type PropsWithChildren<P> = P & { children?: React.ReactNode };
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+const HomeScreen: React.FC<PropsWithChildren<{}>> = ({ navigation }) => {
+  const date = new Date().toLocaleString();
 
-## Congratulations! :tada:
+  return (
+    <View>
+      <Text>Welcome to the Home Screen</Text>
+      <Text>Current Date and Time: {date}</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
+    </View>
+  );
+};
 
-You've successfully run and modified your React Native App. :partying_face:
+const DetailsScreen: React.FC = () => {
+  return (
+    <View>
+      <Text>Details Screen</Text>
+    </View>
+  );
+};
 
-### Now what?
+const Stack = createNativeStackNavigator();
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+const App: React.FC = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-# Troubleshooting
+export default App;
+```
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Notes
+Make sure to run `npx react-native start` before running the application on your device or simulator.
+The example code demonstrates basic navigation and usage of `toLocaleString()` to format the current date and time.
+## Contributing
+Feel free to open issues or submit pull requests for improvements and bug fixes.
 
-# Learn More
+Feel free to customize this README.md according to your project's specifics and any additional instructions you might have.
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+
+
