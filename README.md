@@ -98,6 +98,8 @@ const App: React.FC = () => {
 
 export default App;
 ```
+![mobileShoping](https://github.com/nitin1999n/Shopping10/assets/69898944/587928f3-a23a-4035-b686-920615de1ba9)
+![mobileShoping2](https://github.com/nitin1999n/Shopping10/assets/69898944/da7ef4ac-7ca2-496c-b492-46941ac8d51d)
 
 ## Notes
 Make sure to run `npx react-native start` before running the application on your device or simulator.
